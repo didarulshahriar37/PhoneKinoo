@@ -10,7 +10,7 @@ export default function Stats() {
                 <div className='text-center'>
                     <div className='bg-base-100 px-10 py-5 rounded-2xl mb-4 transition-transform shadow-xl transform hover:scale-105 hover:shadow-2xl duration-300'>
                         <div className='flex items-center justify-center gap-2 text-xl font-semibold'>
-                            <FaMobileAlt/>
+                            <FaMobileAlt />
                             <h3>1200+ Phones</h3>
                         </div>
                         <p className='mt-2'>Browse an extensive collection of smartphones<br /> across all price ranges.</p>
@@ -24,7 +24,7 @@ export default function Stats() {
                     </div>
                     <div className='bg-base-100 px-10 py-5 rounded-2xl shadow-xl transform hover:scale-105 hover:shadow-2xl duration-300'>
                         <div className='flex items-center justify-center gap-2 text-xl font-semibold '>
-                            <FaUsers/>
+                            <FaUsers />
                             <h3>5,000+ Users</h3>
                         </div>
                         <p className='mt-2'>Trusted by thousands of smartphone enthusiasts worldwide.</p>
@@ -41,6 +41,9 @@ export default function Stats() {
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div className='text-center mt-20'>
+                <h3 className='text-2xl md:text-4xl font-bold'>Available Brands</h3>
             </div>
         </div>
     )

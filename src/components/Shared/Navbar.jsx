@@ -1,11 +1,17 @@
+"use client";
+
 import React from 'react'
 import Logo from '../Logo/Logo'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
 
+    const path = usePathname();
+
     const links = <>
-        <li><a>Home</a></li>
-        <li><a>Explore Mobiles</a></li>
+        <li><Link href="/" className={path === "/" ? "text-blue-500" : ""}>Home</Link></li>
+        <li><Link href={"/explore-phones"}>Explore Mobiles</Link></li>
         <li><a>About Us</a></li>
         <li><a>Contact</a></li>
     </>
