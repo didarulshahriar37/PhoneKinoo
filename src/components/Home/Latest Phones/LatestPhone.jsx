@@ -1,6 +1,7 @@
 "use client";
 import Loading from '@/components/Loading/Loading';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { FaStarHalfAlt } from "react-icons/fa";
 
@@ -18,7 +19,7 @@ export default function LatestPhone() {
             })
     }, [])
 
-    if(loading){
+    if (loading) {
         return <Loading></Loading>
     }
 
@@ -28,8 +29,14 @@ export default function LatestPhone() {
                 phones.map(phone => {
                     return (
                         <div key={phone._id} className="card bg-base-100 shadow-xl">
-                            <figure>
-                                <Image src={phone.photo} alt={phone.name} width={300} height={300}></Image>
+                            <figure className="w-full h-56 overflow-hidden flex justify-center items-center bg-base-200">
+                                <Image
+                                    src={phone.photo}
+                                    alt={phone.name}
+                                    width={200}
+                                    height={100}
+                                    className="object-cover"
+                                />
                             </figure>
                             <div className="card-body">
                                 <h2 className="card-title">
@@ -44,7 +51,7 @@ export default function LatestPhone() {
                                     </div>
                                 </div>
                                 <div className='text-center mt-5'>
-                                    <button className='btn'>View Details</button>
+                                    <Link href={`/phone-details/${phone._id}`} className='btn'>View Details</Link>
                                 </div>
                             </div>
                         </div>

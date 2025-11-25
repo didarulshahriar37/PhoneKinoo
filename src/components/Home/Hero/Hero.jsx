@@ -2,6 +2,7 @@ import React from 'react'
 import { FaSearch } from "react-icons/fa";
 import phones from "../../../../public/phones.png";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Hero() {
     return (
@@ -10,7 +11,7 @@ export default function Hero() {
                 <div>
                     <h3 className='text-xl md:text-4xl font-bold md:font-semibold'>Discover, Compare, and Buy Your Next Phone — All in One Place!</h3>
                     <p className='md:text-xl mt-5'>Explore the latest smartphones, compare features, and shop with confidence — the perfect phone is just a click away.</p>
-                    <button className='btn mt-10 mb-5'><FaSearch /> Explore More</button>
+                    <Link href="/explore-phones" className='btn mt-10 mb-5'><FaSearch /> Explore More</Link>
                 </div>
                 <div>
                     <Image src={phones} alt='Phones'></Image>

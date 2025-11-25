@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Loading from '../../Loading/Loading';
 import { FaStarHalfAlt } from 'react-icons/fa';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AllMobiles() {
 
@@ -50,7 +51,7 @@ export default function AllMobiles() {
                                     </div>
                                 </div>
                                 <div className='text-center mt-5'>
-                                    <button className='btn'>View Details</button>
+                                    <Link href={`/phone-details/${phone._id}`} className='btn'>View Details</Link>
                                 </div>
                             </div>
                         </div>
