@@ -15,7 +15,7 @@ export const authOptions = {
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
-                await client.connect();
+                // await client.connect();
                 const db = client.db("phone_kinoo");
                 const usersCollection = db.collection("users");
 
