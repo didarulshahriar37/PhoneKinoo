@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Page() {
   const [name, setName] = useState('');
@@ -15,11 +15,14 @@ export default function Page() {
   const [message, setMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:5000/users', {
+    const res = await fetch('https://phone-kinoo-server.vercel.app/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, photoURL, password }),
@@ -50,7 +53,7 @@ export default function Page() {
       });
 
       if (loginRes?.ok) {
-        router.push("/");
+        router.push(callbackUrl);
       } else {
         setMessage("Auto-login failed. Please sign in manually.");
       }
@@ -120,13 +123,13 @@ export default function Page() {
 
             {message && <p className="text-red-500 mt-2">{message}</p>}
 
-            <button type='submit' className="btn hover:bg-sky-600 bg-sky-400 mt-4 w-full">Sign Up</button>
+            <button type='submit' className="btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b] mt-4 w-full">Create Account</button>
 
             <p className='text-center font-bold text-xl mt-4'>Or</p>
 
             <button
               type="button"
-              onClick={() => signIn("google", { callbackUrl: "/" })}
+              onClick={() => signIn("google", { callbackUrl })}
               className="btn bg-base-300 text-black border-[#e5e5e5] mt-2 w-full flex justify-center items-center gap-2"
             >
               <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -143,7 +146,7 @@ export default function Page() {
 
             <p className='mt-5 font-bold text-center'>
               Already have an account? <span className='text-blue-600 hover:underline'>
-                <Link href="/auth/login">Sign In</Link>
+                <Link href="/auth/login">Login</Link>
               </span>
             </p>
           </form>

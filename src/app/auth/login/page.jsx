@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Swal from 'sweetalert2';
 
 export default function Page() {
@@ -13,13 +13,16 @@ export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState('');
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  // Handle email/password login
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+
   const handleSignIn = async (e) => {
     e.preventDefault();
 
     const res = await signIn("credentials", {
-      redirect: false, // prevents automatic redirect
+      redirect: false,
       email,
       password,
     });
@@ -34,13 +37,13 @@ export default function Page() {
         showConfirmButton: false,
         timer: 1500,
       });
-      router.push("/"); // redirect to homepage after login
+      router.push(callbackUrl);
     }
   };
 
-  // Handle Google sign-in
+
   const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/" });
+    signIn("google", { callbackUrl });
   };
 
   return (
@@ -83,7 +86,7 @@ export default function Page() {
 
             {message && <p className="text-red-500 mt-2">{message}</p>}
 
-            <button type='submit' className="btn hover:bg-sky-600 bg-sky-400 mt-4 w-full">Sign In</button>
+            <button type='submit' className="btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b] mt-4 w-full">Login</button>
 
             <p className='text-center font-bold text-xl mt-4'>Or</p>
 

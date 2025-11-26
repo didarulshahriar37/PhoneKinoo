@@ -6,7 +6,7 @@ export default function SearchDrop() {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/phones")
+        fetch("https://phone-kinoo-server.vercel.app/phones")
             .then(res => res.json())
             .then(data => {
                 const uniqueBrands = [...new Set(data.map(phone => phone.brand))];
@@ -36,7 +36,7 @@ export default function SearchDrop() {
                 </div>
                 <div>
                     <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">Brands</div>
+                        <div tabIndex={0} role="button" className="btn m-1 bg-linear-to-r from-[#ff7e5f] to-[#feb47b]">Brands</div>
                         <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                             {
                                 brands.map((brand, index) => {

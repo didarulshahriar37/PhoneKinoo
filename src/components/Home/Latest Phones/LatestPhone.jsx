@@ -11,7 +11,7 @@ export default function LatestPhone() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5000/latest-phones")
+        fetch("https://phone-kinoo-server.vercel.app/latest-phones")
             .then(res => res.json())
             .then(data => {
                 setPhones(data);
@@ -51,7 +51,7 @@ export default function LatestPhone() {
                                     </div>
                                 </div>
                                 <div className='text-center mt-5'>
-                                    <Link href={`/phone-details/${phone._id}`} className='btn'>View Details</Link>
+                                    <Link href={`/phone-details/${phone._id}`} className='btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b]'>View Details</Link>
                                 </div>
                             </div>
                         </div>

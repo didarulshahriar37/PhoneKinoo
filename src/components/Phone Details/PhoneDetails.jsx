@@ -12,7 +12,7 @@ export default function PhoneDetails({ }) {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch("http://localhost:5000/phones")
+        fetch("https://phone-kinoo-server.vercel.app/phones")
             .then(res => res.json())
             .then(data => {
                 setPhones(data);
@@ -48,7 +48,7 @@ export default function PhoneDetails({ }) {
                 </p>
                 <p className='text-xl font-semibold mt-2'><span className='font-bold'>Price:</span> {singlePhone.price} BDT</p>
                 <div className='text-center mt-5'>
-                    <Link href="/" className='btn'>Go Back</Link>
+                    <Link href="/" className='btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b]'>Go Back</Link>
                 </div>
             </div>
         </div>

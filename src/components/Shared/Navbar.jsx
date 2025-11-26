@@ -5,6 +5,7 @@ import Logo from '../Logo/Logo';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
+import { TiArrowSortedDown } from "react-icons/ti";
 
 export default function Navbar() {
     const path = usePathname();
@@ -13,12 +14,12 @@ export default function Navbar() {
     const links = (
         <>
             <li>
-                <Link href="/" className={path === "/" ? "text-blue-500" : ""}>
+                <Link href="/" className={path === "/" ? "text-transparent bg-clip-text bg-linear-to-r from-[#ff7e5f] to-[#feb47b]" : ""}>
                     Home
                 </Link>
             </li>
             <li>
-                <Link href="/explore-phones">Explore Mobiles</Link>
+                <Link href="/explore-phones" className={path === "/explore-phones" ? "text-transparent bg-clip-text bg-linear-to-r from-[#ff7e5f] to-[#feb47b]" : ""}>Explore Mobiles</Link>
             </li>
             <li>
                 <a>About Us</a>
@@ -57,7 +58,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <a className="flex items-center font-bold text-xl">
-                    <Logo /> PhoneKinoo
+                    <Logo /> Phone<span className='text-transparent bg-clip-text bg-linear-to-r from-[#ff7e5f] to-[#feb47b]'>Kinoo</span>
                 </a>
             </div>
 
@@ -67,18 +68,20 @@ export default function Navbar() {
 
             <div className="navbar-end gap-3">
                 {session ? (
-                    <button
-                        className="btn"
-                        onClick={() => signOut({ callbackUrl: "/" })}
-                    >
-                        Sign Out
-                    </button>
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn m-1 bg-linear-to-r from-[#ff7e5f] to-[#feb47b]">Welcome to PhoneKinoo <TiArrowSortedDown /></div>
+                        <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                            <li><Link href="/add-phones" className={path === "/add-phones" ? "text-transparent bg-clip-text bg-linear-to-r from-[#ff7e5f] to-[#feb47b]" : ""}>Add Phones</Link></li>
+                            <li><Link href="/manage-phones" className={path === "/manage-phones" ? "text-transparent bg-clip-text bg-linear-to-r from-[#ff7e5f] to-[#feb47b]" : ""}>Manage Phones</Link></li>
+                            <button className="btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b]" onClick={() => signOut({ callbackUrl: "/" })} > Sign Out </button>
+                        </ul>
+                    </div>
                 ) : (
                     <>
-                        <Link href="/auth/login" className="btn">
+                        <Link href="/auth/login" className="btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b]">
                             Login
                         </Link>
-                        <Link href="/auth/register" className="btn">
+                        <Link href="/auth/register" className="btn bg-linear-to-r from-[#ff7e5f] to-[#feb47b]">
                             Register
                         </Link>
                     </>
