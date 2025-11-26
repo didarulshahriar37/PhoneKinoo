@@ -57,9 +57,9 @@ export default function Navbar() {
                         {links}
                     </ul>
                 </div>
-                <a className="flex items-center font-bold text-xl">
+                <Link href="/" className="flex items-center font-bold text-xl">
                     <Logo /> Phone<span className='text-transparent bg-clip-text bg-linear-to-r from-[#ff7e5f] to-[#feb47b]'>Kinoo</span>
-                </a>
+                </Link>
             </div>
 
             <div className="navbar-center hidden lg:flex">
